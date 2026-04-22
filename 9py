@@ -1,0 +1,42 @@
+class Juego:
+    def __init__(self, nombre, genero, precio):
+        self._nombre = nombre
+        self._genero = genero
+        self._precio = precio
+
+    def mostrar_informacion(self):
+        return f"Nombre: {self._nombre}, Género: {self._genero}, Precio: {self._precio}"
+
+    def en_oferta(self, valor):
+        return self._precio < valor
+
+    def get_nombre(self):
+        return self._nombre
+
+    def set_nombre(self, nombre):
+        self._nombre = nombre
+
+    def get_genero(self):
+        return self._genero
+
+    def set_genero(self, genero):
+        self._genero = genero
+
+    def get_precio(self):
+        return self._precio
+
+    def set_precio(self, precio):
+        if precio > 0:
+            self._precio = precio
+        else:
+            print("Precio no válido")
+
+
+if __name__ == "__main__":
+    juego1 = Juego("Los Sims 4", "Simulación", 40000)
+    print(juego1.mostrar_informacion())
+
+    if juego1.en_oferta(50000):
+        print("El juego está en oferta")
+    else:
+        print("El juego no está en oferta")
