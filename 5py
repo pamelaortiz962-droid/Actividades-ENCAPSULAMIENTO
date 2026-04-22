@@ -1,0 +1,46 @@
+class Estudiante:
+    def __init__(self, nombre, edad):
+        self._nombre = nombre
+        self._edad = edad
+        self._notas = []
+
+    def agregar_nota(self, nota):
+        if 0 <= nota <= 10:
+            self._notas.append(nota)
+        else:
+            print("Nota no válida")
+
+    def calcular_promedio(self):
+        if len(self._notas) == 0:
+            return 0
+        return sum(self._notas) / len(self._notas)
+
+    def mostrar_informacion(self):
+        return f"Nombre: {self._nombre}, Edad: {self._edad}, Promedio: {self.calcular_promedio()}"
+
+    def get_nombre(self):
+        return self._nombre
+
+    def set_nombre(self, nombre):
+        self._nombre = nombre
+
+    def get_edad(self):
+        return self._edad
+
+    def set_edad(self, edad):
+        if edad > 0:
+            self._edad = edad
+        else:
+            print("Edad no válida")
+
+    def get_notas(self):
+        return self._notas
+
+
+if __name__ == "__main__":
+    estudiante1 = Estudiante("Estropajo", 19)
+    estudiante1.agregar_nota(8)
+    estudiante1.agregar_nota(7)
+    estudiante1.agregar_nota(9)
+
+    print(estudiante1.mostrar_informacion())
