@@ -1,0 +1,50 @@
+class CuentaBancaria:
+    def __init__(self, titular, numero_cuenta):
+        self._titular = titular
+        self._numero_cuenta = numero_cuenta
+        self._saldo = 0.0
+
+    def depositar(self, cantidad):
+        if cantidad > 0:
+            self._saldo += cantidad
+        else:
+            print("La cantidad debe ser mayor que 0")
+
+    def retirar(self, cantidad):
+        if 0 < cantidad <= self._saldo:
+            self._saldo -= cantidad
+        else:
+            print("No se puede retirar esa cantidad")
+
+    def mostrar_informacion(self):
+        return f"Titular: {self._titular}, Cuenta: {self._numero_cuenta}, Saldo: {self._saldo}"
+
+    def get_titular(self):
+        return self._titular
+
+    def set_titular(self, titular):
+        self._titular = titular
+
+    def get_numero_cuenta(self):
+        return self._numero_cuenta
+
+    def set_numero_cuenta(self, numero_cuenta):
+        self._numero_cuenta = numero_cuenta
+
+    def get_saldo(self):
+        return self._saldo
+
+
+if __name__ == "__main__":
+    cuenta1 = CuentaBancaria("Goku", "12345")
+    print(cuenta1.mostrar_informacion())
+
+    cuenta1.depositar(1000)
+    print("Después de depositar:")
+    print(cuenta1.mostrar_informacion())
+
+    cuenta1.retirar(300)
+    print("Después de retirar:")
+    print(cuenta1.mostrar_informacion())
+
+    cuenta1.retirar(1000)
